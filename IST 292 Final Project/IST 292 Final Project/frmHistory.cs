@@ -16,5 +16,17 @@ namespace IST_292_Final_Project
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// File -> Close
+        /// user clicks close menu item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // close the form
+            Close();
+        }
     }
 }
