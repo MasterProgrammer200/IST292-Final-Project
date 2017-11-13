@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace IST_292_Final_Project
 {
-    public partial class frmFolderTerminator : Form
+    public partial class frmSpinner : Form
     {
-        public frmFolderTerminator()
+        public frmSpinner()
         {
             InitializeComponent();
-        }
-
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnTerminate_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }

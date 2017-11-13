@@ -99,6 +99,7 @@
             this.btnTerminate.TabIndex = 3;
             this.btnTerminate.Text = "Terminate";
             this.btnTerminate.UseVisualStyleBackColor = true;
+            this.btnTerminate.Click += new System.EventHandler(this.btnTerminate_Click);
             // 
             // frmFolderTerminator
             // 
