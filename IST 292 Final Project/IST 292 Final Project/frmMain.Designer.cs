@@ -32,7 +32,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.ofdMain = new System.Windows.Forms.OpenFileDialog();
             this.tbxDirectory = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnTerminate = new System.Windows.Forms.Button();
@@ -70,10 +70,11 @@
             this.viewHistoryToolStripMenuItem.Name = "viewHistoryToolStripMenuItem";
             this.viewHistoryToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.viewHistoryToolStripMenuItem.Text = "View History";
+            this.viewHistoryToolStripMenuItem.Click += new System.EventHandler(this.viewHistoryToolStripMenuItem_Click);
             // 
-            // openFileDialog1
+            // ofdMain
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.ofdMain.FileName = "MainFileDialog";
             // 
             // tbxDirectory
             // 
@@ -90,6 +91,7 @@
             this.btnBrowse.TabIndex = 2;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // btnTerminate
             // 
@@ -123,7 +125,7 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip mspMain;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog ofdMain;
         private System.Windows.Forms.TextBox tbxDirectory;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
