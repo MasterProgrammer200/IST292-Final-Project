@@ -28,19 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDelete = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::IST_292_Final_Project.Properties.Resources.lg_fidget_spinner;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(260, 241);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // lblDelete
             // 
@@ -51,6 +42,15 @@
             this.lblDelete.TabIndex = 1;
             this.lblDelete.Text = "Deleting Folder....";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::IST_292_Final_Project.Properties.Resources.lg_fidget_spinner;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(260, 241);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmSpinner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -59,7 +59,7 @@
             this.Controls.Add(this.lblDelete);
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmSpinner";
-            this.Text = "frmSpinner";
+            this.Text = "Spinner";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
