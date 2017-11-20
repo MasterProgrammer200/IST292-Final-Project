@@ -49,7 +49,12 @@ namespace IST_292_Final_Project
         /// <param name="e"></param>
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            ofdMain.ShowDialog();
+            // show the folder dialog
+            if (fbdMain.ShowDialog() == DialogResult.OK)
+            {
+                // set the textbox to the path the user selected
+                tbxDirectory.Text = fbdMain.SelectedPath;
+            }
         }
 
         /// <summary>

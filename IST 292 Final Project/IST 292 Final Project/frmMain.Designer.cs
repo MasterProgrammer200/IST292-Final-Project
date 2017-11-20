@@ -32,10 +32,10 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ofdMain = new System.Windows.Forms.OpenFileDialog();
             this.tbxDirectory = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnTerminate = new System.Windows.Forms.Button();
+            this.fbdMain = new System.Windows.Forms.FolderBrowserDialog();
             this.mspMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +61,7 @@
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -71,10 +71,6 @@
             this.viewHistoryToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.viewHistoryToolStripMenuItem.Text = "View History";
             this.viewHistoryToolStripMenuItem.Click += new System.EventHandler(this.viewHistoryToolStripMenuItem_Click);
-            // 
-            // ofdMain
-            // 
-            this.ofdMain.FileName = "MainFileDialog";
             // 
             // tbxDirectory
             // 
@@ -125,13 +121,13 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip mspMain;
-        private System.Windows.Forms.OpenFileDialog ofdMain;
         private System.Windows.Forms.TextBox tbxDirectory;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewHistoryToolStripMenuItem;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Button btnTerminate;
+        private System.Windows.Forms.FolderBrowserDialog fbdMain;
     }
 }
 
