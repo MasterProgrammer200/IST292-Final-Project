@@ -74,6 +74,7 @@
             // 
             // tbxDirectory
             // 
+            this.tbxDirectory.Enabled = false;
             this.tbxDirectory.Location = new System.Drawing.Point(12, 102);
             this.tbxDirectory.Name = "tbxDirectory";
             this.tbxDirectory.Size = new System.Drawing.Size(447, 20);
