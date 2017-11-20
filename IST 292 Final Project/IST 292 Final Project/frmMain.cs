@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,7 +65,24 @@ namespace IST_292_Final_Project
         /// <param name="e"></param>
         private void btnTerminate_Click(object sender, EventArgs e)
         {
-            ShowSpinner();
+
+            // get the directory info of the path the user selected
+            DirectoryInfo di = new DirectoryInfo(tbxDirectory.Text);
+
+            // loop through all the files in the directory
+            foreach (FileInfo file in di.GetFiles())
+            {
+                // delete the file
+                file.Delete();
+            }
+
+            // loop through all the folders in the directory
+            foreach (DirectoryInfo dir in di.GetDirectories())
+            {
+                // delete the directory
+                dir.Delete(true);
+            }
+
         }
 
         private async void ShowSpinner()
