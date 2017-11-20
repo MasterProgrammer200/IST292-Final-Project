@@ -13,6 +13,12 @@ namespace IST_292_Final_Project
 {
     public partial class frmFolderTerminator : Form
     {
+
+        // 
+        // private fields
+        //
+        private String FolderPath = "";     // holds the path of the folder to be deleted
+
         public frmFolderTerminator()
         {
             InitializeComponent();
@@ -53,9 +59,13 @@ namespace IST_292_Final_Project
             // show the folder dialog
             if (fbdMain.ShowDialog() == DialogResult.OK)
             {
-                // set the textbox to the path the user selected
-                tbxDirectory.Text = fbdMain.SelectedPath;
+                // set the folder path to the path the user selected
+                 FolderPath = fbdMain.SelectedPath;
             }
+
+            // display the folder path in the text box
+            tbxDirectory.Text = FolderPath;
+
         }
 
         /// <summary>
@@ -69,7 +79,7 @@ namespace IST_292_Final_Project
             frmSpinner spinner = new frmSpinner();
 
             // get the directory info of the path the user selected
-            DirectoryInfo di = new DirectoryInfo(tbxDirectory.Text);
+            DirectoryInfo di = new DirectoryInfo(FolderPath);
 
             // show the spinner
             spinner.Show();
