@@ -65,9 +65,14 @@ namespace IST_292_Final_Project
         /// <param name="e"></param>
         private void btnTerminate_Click(object sender, EventArgs e)
         {
+            // create a spinner
+            frmSpinner spinner = new frmSpinner();
 
             // get the directory info of the path the user selected
             DirectoryInfo di = new DirectoryInfo(tbxDirectory.Text);
+
+            // show the spinner
+            spinner.Show();
 
             // loop through all the files in the directory
             foreach (FileInfo file in di.GetFiles())
@@ -83,15 +88,9 @@ namespace IST_292_Final_Project
                 dir.Delete(true);
             }
 
-        }
+            // close the spinner
+            spinner.Close();
 
-        private async void ShowSpinner()
-        {
-            // open the spinner
-            frmSpinner form = new frmSpinner();
-            form.Show();
-            await Task.Delay(5000);
-            form.Close();
         }
 
     }
