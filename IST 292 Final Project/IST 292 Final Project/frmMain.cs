@@ -100,6 +100,30 @@ namespace IST_292_Final_Project
             // wait at least 3 seconds so user doesn't get flashed with spinner
             await Task.Delay(3000);
 
+            try
+            {
+                // get the directory info of the path the user selected
+                DirectoryInfo di = new DirectoryInfo(FolderPath);
+
+                // loop through all the files in the directory
+                foreach (FileInfo file in di.GetFiles())
+                {
+                    // delete the file
+                    await Task.Run(() => { file.Delete(); });
+                }
+
+                // loop through all the folders in the directory
+                foreach (DirectoryInfo dir in di.GetDirectories())
+                {
+                    // delete the directory
+                    await Task.Run(() => { dir.Delete(true); });
+                }
+            }
+            catch (Exception e)
+            {
+                error = true;
+            }
+
             return error;
         }
 
