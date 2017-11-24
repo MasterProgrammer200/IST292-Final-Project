@@ -73,34 +73,34 @@ namespace IST_292_Final_Project
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnTerminate_Click(object sender, EventArgs e)
+        private async void btnTerminate_Click(object sender, EventArgs e)
         {
             // create a spinner
             frmSpinner spinner = new frmSpinner();
 
-            // get the directory info of the path the user selected
-            DirectoryInfo di = new DirectoryInfo(FolderPath);
-
             // show the spinner
             spinner.Show();
 
-            // loop through all the files in the directory
-            foreach (FileInfo file in di.GetFiles())
-            {
-                // delete the file
-                file.Delete();
-            }
+            bool result = await DeleteFilesAsync();
 
-            // loop through all the folders in the directory
-            foreach (DirectoryInfo dir in di.GetDirectories())
-            {
-                // delete the directory
-                dir.Delete(true);
-            }
+            // todo: handle result
 
             // close the spinner
             spinner.Close();
 
+        }
+
+        // todo: document
+        // todo: create error log
+        // todo: log in database
+        private async Task<bool> DeleteFilesAsync()
+        {
+            bool error = false;
+
+            // wait at least 3 seconds so user doesn't get flashed with spinner
+            await Task.Delay(3000);
+
+            return error;
         }
 
     }
