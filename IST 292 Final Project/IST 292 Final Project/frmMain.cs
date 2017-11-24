@@ -24,7 +24,6 @@ namespace IST_292_Final_Project
         //
         private String FolderPath = "";     // holds the path of the folder to be deleted
         
-
         public frmFolderTerminator()
         {
             InitializeComponent();
@@ -87,8 +86,10 @@ namespace IST_292_Final_Project
             // show the spinner
             spinner.Show();
 
+            // delete the folder and get the result
             bool result = await DeleteFilesAsync();
 
+            // check if there was an error and if so notify the user
             if (result) MessageBox.Show(@"Error deleteing folder. Check " + LOG_FILENAME + @" for details.");
 
             // close the spinner
@@ -96,15 +97,22 @@ namespace IST_292_Final_Project
 
         }
 
-        // todo: document
-        // todo: log in database
+        /// <summary>
+        /// asynchronously deletes the specified folder
+        /// </summary>
+        /// <returns>error: whether the folder was successfully deleted</returns>
         private async Task<bool> DeleteFilesAsync()
         {
-            bool error = false;
+
+            //
+            // local variables
+            //
+            bool error = false; // holds whether folder was deleted successfully
 
             // wait at least 3 seconds so user doesn't get flashed with spinner
             await Task.Delay(3000);
 
+            // try to delete the specified folder
             try
             {
                 // get the directory info of the path the user selected
@@ -126,19 +134,27 @@ namespace IST_292_Final_Project
             }
             catch (Exception ex)
             {
+                // log the exception and set the error flag to true
                 LogError(ex.Message);
                 error = true;
             }
 
+            // return whether the folder was deleted
             return error;
         }
 
+        /// <summary>
+        /// writes the specified string to the log file
+        /// </summary>
+        /// <param name="error">error: the error to log</param>
         private void LogError(String error)
         {
             // write to file
             StreamWriter outputFile;
             outputFile = File.AppendText(LOG_FILENAME);
             outputFile.WriteLine("[ERROR " + DateTime.Now + "]: " + error);
+
+            // close the file
             outputFile.Close();
         }
 
