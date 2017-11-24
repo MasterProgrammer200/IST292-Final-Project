@@ -87,7 +87,7 @@ namespace IST_292_Final_Project
             spinner.Show();
 
             // delete the folder and get the result
-            bool result = await DeleteFilesAsync();
+            bool result = await DeleteFolderAsync(FolderPath);
 
             // check if there was an error and if so notify the user
             if (result) MessageBox.Show(@"Error deleteing folder. Check " + LOG_FILENAME + @" for details.");
@@ -100,8 +100,9 @@ namespace IST_292_Final_Project
         /// <summary>
         /// asynchronously deletes the specified folder
         /// </summary>
+        /// <param name="folderToDelete">the path of the folder to delete</param>
         /// <returns>error: whether the folder was successfully deleted</returns>
-        private async Task<bool> DeleteFilesAsync()
+        private async Task<bool> DeleteFolderAsync(String folderToDelete)
         {
 
             //
@@ -116,7 +117,7 @@ namespace IST_292_Final_Project
             try
             {
                 // get the directory info of the path the user selected
-                DirectoryInfo di = new DirectoryInfo(FolderPath);
+                DirectoryInfo di = new DirectoryInfo(folderToDelete);
 
                 // loop through all the files in the directory
                 foreach (FileInfo file in di.GetFiles())
