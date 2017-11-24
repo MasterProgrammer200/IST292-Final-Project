@@ -14,10 +14,16 @@ namespace IST_292_Final_Project
     public partial class frmFolderTerminator : Form
     {
 
+        //
+        // private consts
+        //
+        private const string LOG_FILENAME = "log.error";
+
         // 
         // private fields
         //
         private String FolderPath = "";     // holds the path of the folder to be deleted
+        
 
         public frmFolderTerminator()
         {
@@ -83,7 +89,7 @@ namespace IST_292_Final_Project
 
             bool result = await DeleteFilesAsync();
 
-            // todo: handle result
+            if (result) MessageBox.Show(@"Error deleteing folder. Check " + LOG_FILENAME + @" for details.");
 
             // close the spinner
             spinner.Close();
@@ -91,7 +97,6 @@ namespace IST_292_Final_Project
         }
 
         // todo: document
-        // todo: create error log
         // todo: log in database
         private async Task<bool> DeleteFilesAsync()
         {
@@ -119,12 +124,22 @@ namespace IST_292_Final_Project
                     await Task.Run(() => { dir.Delete(true); });
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
+                LogError(ex.Message);
                 error = true;
             }
 
             return error;
+        }
+
+        private void LogError(String error)
+        {
+            // write to file
+            StreamWriter outputFile;
+            outputFile = File.AppendText(LOG_FILENAME);
+            outputFile.WriteLine("[ERROR " + DateTime.Now + "]: " + error);
+            outputFile.Close();
         }
 
     }
