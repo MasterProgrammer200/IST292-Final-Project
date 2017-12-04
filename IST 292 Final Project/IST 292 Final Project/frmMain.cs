@@ -80,6 +80,24 @@ namespace IST_292_Final_Project
         /// <param name="e"></param>
         private async void btnTerminate_Click(object sender, EventArgs e)
         {
+
+            // VALIDATION CHECK 1 - Textbox is not empty
+            if (tbxDirectory.Text == "")
+            {
+                erp.SetError(tbxDirectory, "You must first select a directory.");
+                return;
+            }
+
+            // VALIDATION CHECK 2 - Textbox contains a valid directory
+            if (!Directory.Exists(tbxDirectory.Text))
+            {
+                erp.SetError(tbxDirectory, "Invalid Directory.");
+                return;
+            }
+
+            // clear the error provider
+            erp.Clear();
+
             // create a spinner
             frmSpinner spinner = new frmSpinner();
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.mspMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,7 +37,9 @@
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnTerminate = new System.Windows.Forms.Button();
             this.fbdMain = new System.Windows.Forms.FolderBrowserDialog();
+            this.erp = new System.Windows.Forms.ErrorProvider(this.components);
             this.mspMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).BeginInit();
             this.SuspendLayout();
             // 
             // mspMain
@@ -74,10 +77,9 @@
             // 
             // tbxDirectory
             // 
-            this.tbxDirectory.Enabled = false;
-            this.tbxDirectory.Location = new System.Drawing.Point(12, 102);
+            this.tbxDirectory.Location = new System.Drawing.Point(35, 102);
             this.tbxDirectory.Name = "tbxDirectory";
-            this.tbxDirectory.Size = new System.Drawing.Size(447, 20);
+            this.tbxDirectory.Size = new System.Drawing.Size(376, 20);
             this.tbxDirectory.TabIndex = 1;
             // 
             // btnBrowse
@@ -100,6 +102,10 @@
             this.btnTerminate.UseVisualStyleBackColor = true;
             this.btnTerminate.Click += new System.EventHandler(this.btnTerminate_Click);
             // 
+            // erp
+            // 
+            this.erp.ContainerControl = this;
+            // 
             // frmFolderTerminator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,6 +120,7 @@
             this.Text = "Folder Terminator";
             this.mspMain.ResumeLayout(false);
             this.mspMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,6 +136,7 @@
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Button btnTerminate;
         private System.Windows.Forms.FolderBrowserDialog fbdMain;
+        private System.Windows.Forms.ErrorProvider erp;
     }
 }
 
