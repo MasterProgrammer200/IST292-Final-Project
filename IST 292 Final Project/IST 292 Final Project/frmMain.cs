@@ -23,7 +23,8 @@ namespace IST_292_Final_Project
         // private fields
         //
         private String FolderPath = "";     // holds the path of the folder to be deleted
-        
+        private TerminatorDBUtils dbUtils = new TerminatorDBUtils();
+
         public frmFolderTerminator()
         {
             InitializeComponent();
@@ -108,7 +109,15 @@ namespace IST_292_Final_Project
             bool result = await DeleteFolderAsync(FolderPath);
 
             // check if there was an error and if so notify the user
-            if (result) MessageBox.Show(@"Error deleteing folder. Check " + LOG_FILENAME + @" for details.");
+            if (result)
+            {
+                // log error
+                MessageBox.Show(@"Error deleteing folder. Check " + LOG_FILENAME + @" for details.");
+                dbUtils.AddHistory(tbxDirectory.Text, DateTime.Now, true);
+            }
+
+            // log success
+            dbUtils.AddHistory(tbxDirectory.Text, DateTime.Now, true);
 
             // close the spinner
             spinner.Close();
