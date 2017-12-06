@@ -91,6 +91,122 @@ namespace IST_292_Final_Project
         }
 
         /// <summary>
+        /// CRUD - UPDATE
+        /// Updates a history item in the database
+        /// </summary>
+        /// <param name="pId"></param>
+        /// <param name="pPath"></param>
+        /// <param name="pDate"></param>
+        /// <param name="pSuccess"></param>
+        /// <returns></returns>
+        public bool EditHistory(int pId, string pPath, DateTime pDate, bool pSuccess)
+        {
+            bool result = true;
+
+            SQL = "UPDATE " + HISTORY_TABLE + " SET " +
+                  PATH_COLUMN + " = " + PATH_PARAMETER + " AND " + DATE_DELETED_COLUMN +
+                  " = " + DATE_DELETED_PARAMETER + " AND " + SUCCESS_COLUMN + " = " + SUCCESS_PARAMETER +
+                  " WHERE " + ID_COLUMN + " = " + ID_PARAMETER;
+
+            try
+            {
+                using (conn = new SQLiteConnection(CONNECTION_STRING))
+                {
+                    conn.Open();
+
+                    using (comm = new SQLiteCommand(SQL, conn))
+                    {
+                        comm.Parameters.AddWithValue(ID_PARAMETER, pId);
+                        comm.Parameters.AddWithValue(PATH_PARAMETER, pPath);
+                        comm.Parameters.AddWithValue(DATE_DELETED_PARAMETER, pDate);
+                        comm.Parameters.AddWithValue(SUCCESS_PARAMETER, pSuccess);
+
+                        comm.ExecuteNonQuery();
+                        mLastStatus = "Record updated";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // log any errors
+                result = false;
+                LogError(ex.Message);
+                mLastStatus = "Error updating database, check " + LOG_FILENAME + " for details.";
+            }
+
+            return result;
+        }//end EditEmployee
+
+        /// <summary>
+        /// CRUD - READ
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllHistory()
+        {
+            SQL = "SELECT * FROM " + HISTORY_TABLE + " ORDER BY " + DATE_DELETED_COLUMN;
+
+            try
+            {
+                using (conn = new SQLiteConnection(CONNECTION_STRING))
+                {
+                    conn.Open();
+
+                    using (da = new SQLiteDataAdapter(SQL, conn))
+                    {
+                        using (ds = new DataSet())
+                        {
+                            ds.Clear();
+                            da.Fill(ds);
+                            return ds.Tables[0];
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogError(ex.Message);
+                mLastStatus = "Error selecting all database, check " + LOG_FILENAME + " for details.";
+                return null;
+            }
+            
+        }
+
+        /// <summary>
+        /// CRUD - DELETE
+        /// </summary>
+        /// <param name="pId"></param>
+        /// <returns></returns>
+        public bool DeleteCity(string pId)
+        {
+            bool result = true;
+
+            SQL = "DELETE FROM " + HISTORY_TABLE + " WHERE " + ID_COLUMN + " = " + ID_PARAMETER; ;
+
+            try
+            {
+                using (conn = new SQLiteConnection(CONNECTION_STRING))
+                {
+                    conn.Open();
+
+                    using (comm = new SQLiteCommand(SQL, conn))
+                    {
+                        comm.Parameters.AddWithValue(ID_PARAMETER, pId);
+                        comm.ExecuteNonQuery();
+                        mLastStatus = "Record deleted";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogError(ex.Message);
+                mLastStatus = "Error deleteing from database, check " + LOG_FILENAME + " for details.";
+                result = false;
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// writes the specified string to the log file
         /// </summary>
         /// <param name="error">error: the error to log</param>
