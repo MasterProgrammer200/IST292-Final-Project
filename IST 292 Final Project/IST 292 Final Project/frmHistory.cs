@@ -12,9 +12,13 @@ namespace IST_292_Final_Project
 {
     public partial class frmHistory : Form
     {
+
+        private TerminatorDBUtils dbUtils = new TerminatorDBUtils();
+
         public frmHistory()
         {
             InitializeComponent();
+            DisplayTable();
         }
 
         /// <summary>
@@ -27,6 +31,22 @@ namespace IST_292_Final_Project
         {
             // close the form
             Close();
+        }
+
+        private void DisplayTable()
+        {
+            dgvHistory.DataSource = dbUtils.GetAllHistory();
+            dgvHistory.ClearSelection();
+        }
+
+        /// <summary>
+        /// user clicks the show all button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tslShowAll_Click(object sender, EventArgs e)
+        {
+            DisplayTable();
         }
     }
 }
