@@ -213,7 +213,7 @@ namespace IST_292_Final_Project
         /// </summary>
         /// <param name="pId"></param>
         /// <returns></returns>
-        public bool DeleteHistory(string pId)
+        public bool DeleteHistory(long pId)
         {
             bool result = true;
 

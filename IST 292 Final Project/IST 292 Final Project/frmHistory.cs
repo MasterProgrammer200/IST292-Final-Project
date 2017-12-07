@@ -69,6 +69,44 @@ namespace IST_292_Final_Project
             }
         }
 
+        /// <summary>
+        /// user clicks the delete button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tslDelete_Click(object sender, EventArgs e)
+        {
+            lblStatus.Text = "";
+            if (dgvHistory.SelectedRows.Count > 0)
+            {
+                // confirm that user wants to delete
+                DialogResult dr =
+                    MessageBox.Show("Deleting the selected history will permanently remove. Do you want to continue?",
+                        "Confirm Delete", MessageBoxButtons.YesNo);
+
+                if (dr == DialogResult.Yes)
+                {
+                    long selectedId = (long)dgvHistory.SelectedRows[0].Cells[0].Value;
+
+                    // delete the selected item and reload the data if successful
+                    if (dbUtils.DeleteHistory(selectedId) == true)
+                    {
+                        DisplayTable();
+                        lblStatus.Text = "History deleted";
+
+                    }
+                    else
+                    {
+                        lblStatus.Text = "Error deleting history";
+                    }
+                }
+            }
+            else
+            {
+                lblStatus.Text = "No history selected";
+            }
+        }
+
         private void DisplayTable()
         {
             dgvHistory.DataSource = dbUtils.GetAllHistory();

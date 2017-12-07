@@ -47,9 +47,9 @@
             // dgvHistory
             // 
             this.dgvHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHistory.Location = new System.Drawing.Point(13, 63);
+            this.dgvHistory.Location = new System.Drawing.Point(13, 39);
             this.dgvHistory.Name = "dgvHistory";
-            this.dgvHistory.Size = new System.Drawing.Size(590, 257);
+            this.dgvHistory.Size = new System.Drawing.Size(590, 281);
             this.dgvHistory.TabIndex = 0;
             // 
             // toolStrip1
@@ -99,6 +99,7 @@
             this.tslDelete.Name = "tslDelete";
             this.tslDelete.Size = new System.Drawing.Size(40, 22);
             this.tslDelete.Text = "Delete";
+            this.tslDelete.Click += new System.EventHandler(this.tslDelete_Click);
             // 
             // toolStripSeparator4
             // 
