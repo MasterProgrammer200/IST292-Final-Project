@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbxSuccess = new System.Windows.Forms.TextBox();
             this.lblSuccess = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -36,6 +37,8 @@
             this.lblPath = new System.Windows.Forms.Label();
             this.dtpDateDeleted = new System.Windows.Forms.DateTimePicker();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.erp = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).BeginInit();
             this.SuspendLayout();
             // 
             // tbxSuccess
@@ -104,6 +107,10 @@
             this.lblStatus.Size = new System.Drawing.Size(0, 13);
             this.lblStatus.TabIndex = 30;
             // 
+            // erp
+            // 
+            this.erp.ContainerControl = this;
+            // 
             // EditHistoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,6 +127,7 @@
             this.Name = "EditHistoryForm";
             this.Text = "EditHistoryForm";
             this.Load += new System.EventHandler(this.EditHistoryForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,5 +142,6 @@
         private System.Windows.Forms.Label lblPath;
         private System.Windows.Forms.DateTimePicker dtpDateDeleted;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.ErrorProvider erp;
     }
 }

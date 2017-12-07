@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dtpDateDeleted = new System.Windows.Forms.DateTimePicker();
             this.tbxSuccess = new System.Windows.Forms.TextBox();
             this.lblSuccess = new System.Windows.Forms.Label();
@@ -36,6 +37,8 @@
             this.lblDateDeleted = new System.Windows.Forms.Label();
             this.lblPath = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.erp = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).BeginInit();
             this.SuspendLayout();
             // 
             // dtpDateDeleted
@@ -104,6 +107,10 @@
             this.lblStatus.Size = new System.Drawing.Size(0, 13);
             this.lblStatus.TabIndex = 37;
             // 
+            // erp
+            // 
+            this.erp.ContainerControl = this;
+            // 
             // NewHistoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,6 +126,7 @@
             this.Controls.Add(this.lblPath);
             this.Name = "NewHistoryForm";
             this.Text = "NewHistoryForm";
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,5 +142,6 @@
         private System.Windows.Forms.Label lblDateDeleted;
         private System.Windows.Forms.Label lblPath;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.ErrorProvider erp;
     }
 }

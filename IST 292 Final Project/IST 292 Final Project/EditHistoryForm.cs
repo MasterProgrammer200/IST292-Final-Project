@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,22 @@ namespace IST_292_Final_Project
         /// <param name="e"></param>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            // validate user input
+
+            // CHECK 1 - path is a directory
+            if (!Directory.Exists(tbxPath.Text))
+            {
+                erp.SetError(tbxPath, "Invalid Directory.");
+                return;
+            }
+
+            // CHECK 2 - success is a bool
+            if (!(tbxSuccess.Text == "0" || tbxSuccess.Text == "1"))
+            {
+                erp.SetError(tbxSuccess, "Success must be 1 or 0.");
+                return;
+            }
+
             // for valid input update history in the database
             try
             {
