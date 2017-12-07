@@ -120,11 +120,23 @@ namespace IST_292_Final_Project
             DisplayTable();
         }
 
+        /// <summary>
+        /// user clicks the close button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tslClose_Click(object sender, EventArgs e)
+        {
+            // close the form
+            Close();
+        }
+
         private void DisplayTable()
         {
             dgvHistory.DataSource = dbUtils.GetAllHistory();
             dgvHistory.ClearSelection();
         }
 
+        
     }
 }

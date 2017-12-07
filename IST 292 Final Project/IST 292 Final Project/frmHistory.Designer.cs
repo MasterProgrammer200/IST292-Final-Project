@@ -123,6 +123,7 @@
             this.tslClose.Name = "tslClose";
             this.tslClose.Size = new System.Drawing.Size(36, 22);
             this.tslClose.Text = "Close";
+            this.tslClose.Click += new System.EventHandler(this.tslClose_Click);
             // 
             // lblStatus
             // 
