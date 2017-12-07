@@ -91,6 +91,43 @@ namespace IST_292_Final_Project
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pId"></param>
+        /// <returns></returns>
+        public DataTable GetById(long pId)
+        {
+            SQL = "SELECT * FROM " + HISTORY_TABLE + " WHERE " + ID_COLUMN + " = " + ID_PARAMETER;
+
+            try
+            {
+                using (conn = new SQLiteConnection(CONNECTION_STRING))
+                {
+                    conn.Open();
+
+                    using (da = new SQLiteDataAdapter(SQL, conn))
+                    {
+                        da.SelectCommand.Parameters.AddWithValue(ID_PARAMETER, pId);
+
+                        using (ds = new DataSet())
+                        {
+                            ds.Clear();
+                            da.Fill(ds);
+                            return ds.Tables[0];
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // log any errors
+                LogError(ex.Message);
+                mLastStatus = "Error reading database, check " + LOG_FILENAME + " for details.";
+                return null;
+            }
+        }
+
+        /// <summary>
         /// CRUD - UPDATE
         /// Updates a history item in the database
         /// </summary>
@@ -99,13 +136,13 @@ namespace IST_292_Final_Project
         /// <param name="pDate"></param>
         /// <param name="pSuccess"></param>
         /// <returns></returns>
-        public bool EditHistory(int pId, string pPath, DateTime pDate, bool pSuccess)
+        public bool EditHistory(long pId, string pPath, DateTime pDate, bool pSuccess)
         {
             bool result = true;
 
             SQL = "UPDATE " + HISTORY_TABLE + " SET " +
-                  PATH_COLUMN + " = " + PATH_PARAMETER + " AND " + DATE_DELETED_COLUMN +
-                  " = " + DATE_DELETED_PARAMETER + " AND " + SUCCESS_COLUMN + " = " + SUCCESS_PARAMETER +
+                  PATH_COLUMN + " = " + PATH_PARAMETER + ", " + DATE_DELETED_COLUMN +
+                  " = " + DATE_DELETED_PARAMETER + ", " + SUCCESS_COLUMN + " = " + SUCCESS_PARAMETER +
                   " WHERE " + ID_COLUMN + " = " + ID_PARAMETER;
 
             try
@@ -176,7 +213,7 @@ namespace IST_292_Final_Project
         /// </summary>
         /// <param name="pId"></param>
         /// <returns></returns>
-        public bool DeleteCity(string pId)
+        public bool DeleteHistory(string pId)
         {
             bool result = true;
 

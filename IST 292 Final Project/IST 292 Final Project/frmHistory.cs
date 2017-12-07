@@ -33,11 +33,7 @@ namespace IST_292_Final_Project
             Close();
         }
 
-        private void DisplayTable()
-        {
-            dgvHistory.DataSource = dbUtils.GetAllHistory();
-            dgvHistory.ClearSelection();
-        }
+        
 
         /// <summary>
         /// user clicks the show all button
@@ -48,5 +44,37 @@ namespace IST_292_Final_Project
         {
             DisplayTable();
         }
+
+        /// <summary>
+        /// user clicks the edit button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tslEdit_Click(object sender, EventArgs e)
+        {
+            lblStatus.Text = "";
+
+            if (dgvHistory.SelectedRows.Count > 0)
+            {
+                // pass the id to the edit from and show it
+                long Id = (long)(dgvHistory.SelectedRows[0].Cells[0].Value);
+                EditHistoryForm frmEdit = new EditHistoryForm();
+                frmEdit.SetHistoryID(Id);
+                frmEdit.ShowDialog();
+                DisplayTable();
+            }
+            else
+            {
+                lblStatus.Text = "Click on a history item to select it";
+            }
+        }
+
+        private void DisplayTable()
+        {
+            dgvHistory.DataSource = dbUtils.GetAllHistory();
+            dgvHistory.ClearSelection();
+        }
+
+        
     }
 }

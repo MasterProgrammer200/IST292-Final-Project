@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvHistory = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tslShowAll = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -42,8 +39,8 @@
             this.tslAdd = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tslClose = new System.Windows.Forms.ToolStripLabel();
+            this.lblStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,33 +49,8 @@
             this.dgvHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHistory.Location = new System.Drawing.Point(13, 63);
             this.dgvHistory.Name = "dgvHistory";
-            this.dgvHistory.Size = new System.Drawing.Size(590, 271);
+            this.dgvHistory.Size = new System.Drawing.Size(590, 257);
             this.dgvHistory.TabIndex = 0;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(615, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.closeToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -92,7 +64,7 @@
             this.tslAdd,
             this.toolStripSeparator5,
             this.tslClose});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(615, 25);
             this.toolStrip1.TabIndex = 2;
@@ -115,6 +87,7 @@
             this.tslEdit.Name = "tslEdit";
             this.tslEdit.Size = new System.Drawing.Size(27, 22);
             this.tslEdit.Text = "Edit";
+            this.tslEdit.Click += new System.EventHandler(this.tslEdit_Click);
             // 
             // toolStripSeparator3
             // 
@@ -149,20 +122,25 @@
             this.tslClose.Size = new System.Drawing.Size(36, 22);
             this.tslClose.Text = "Close";
             // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(9, 325);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 13);
+            this.lblStatus.TabIndex = 3;
+            // 
             // frmHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 346);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dgvHistory);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmHistory";
             this.Text = "History";
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -173,9 +151,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvHistory;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel tslShowAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -186,5 +161,6 @@
         private System.Windows.Forms.ToolStripLabel tslAdd;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripLabel tslClose;
+        private System.Windows.Forms.Label lblStatus;
     }
 }
