@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* 
+ * Name:    Matthew Hunt
+ * Project: Final Project
+ * Date:    12/6/2017
+ * Purpose: Allows a user to delete a folder and view/edit delete history.
+ */
 namespace IST_292_Final_Project
 {
     public partial class frmFolderTerminator : Form
@@ -22,9 +22,12 @@ namespace IST_292_Final_Project
         // 
         // private fields
         //
-        private String FolderPath = "";     // holds the path of the folder to be deleted
+        private string FolderPath = "";     // holds the path of the folder to be deleted
         private TerminatorDBUtils dbUtils = new TerminatorDBUtils();
 
+        /// <summary>
+        /// constructor
+        /// </summary>
         public frmFolderTerminator()
         {
             InitializeComponent();

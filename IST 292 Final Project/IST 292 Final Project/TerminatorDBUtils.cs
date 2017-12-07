@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
+/* 
+ * Name:    Matthew Hunt
+ * Project: Final Project
+ * Date:    12/6/2017
+ * Purpose: Allows a user to delete a folder and view/edit delete history.
+ */
 namespace IST_292_Final_Project
 {
     class TerminatorDBUtils
@@ -172,7 +174,7 @@ namespace IST_292_Final_Project
             }
 
             return result;
-        }//end EditEmployee
+        }
 
         /// <summary>
         /// CRUD - READ
@@ -180,7 +182,7 @@ namespace IST_292_Final_Project
         /// <returns></returns>
         public DataTable GetAllHistory()
         {
-            SQL = "SELECT * FROM " + HISTORY_TABLE + " ORDER BY " + DATE_DELETED_COLUMN;
+            SQL = "SELECT * FROM " + HISTORY_TABLE + " ORDER BY " + ID_COLUMN;
 
             try
             {

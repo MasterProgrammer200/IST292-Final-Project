@@ -1,39 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* 
+ * Name:    Matthew Hunt
+ * Project: Final Project
+ * Date:    12/6/2017
+ * Purpose: Allows a user to delete a folder and view/edit delete history.
+ */
 namespace IST_292_Final_Project
 {
     public partial class frmHistory : Form
     {
 
+        /// 
+        /// private field
+        /// 
         private TerminatorDBUtils dbUtils = new TerminatorDBUtils();
 
+        /// <summary>
+        /// constructor
+        /// </summary>
         public frmHistory()
         {
             InitializeComponent();
+            // populate the table
             DisplayTable();
         }
-
-        /// <summary>
-        /// File -> Close
-        /// user clicks close menu item
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // close the form
-            Close();
-        }
-
-        
 
         /// <summary>
         /// user clicks the show all button
@@ -54,6 +46,7 @@ namespace IST_292_Final_Project
         {
             lblStatus.Text = "";
 
+            // open the edit form
             if (dgvHistory.SelectedRows.Count > 0)
             {
                 // pass the id to the edit from and show it
@@ -76,6 +69,7 @@ namespace IST_292_Final_Project
         /// <param name="e"></param>
         private void tslDelete_Click(object sender, EventArgs e)
         {
+
             lblStatus.Text = "";
             if (dgvHistory.SelectedRows.Count > 0)
             {
@@ -131,12 +125,13 @@ namespace IST_292_Final_Project
             Close();
         }
 
+        /// <summary>
+        /// helper to display all the table data
+        /// </summary>
         private void DisplayTable()
         {
             dgvHistory.DataSource = dbUtils.GetAllHistory();
             dgvHistory.ClearSelection();
         }
-
-        
     }
 }
