@@ -111,6 +111,7 @@
             this.tslAdd.Name = "tslAdd";
             this.tslAdd.Size = new System.Drawing.Size(29, 22);
             this.tslAdd.Text = "Add";
+            this.tslAdd.Click += new System.EventHandler(this.tslAdd_Click);
             // 
             // toolStripSeparator5
             // 

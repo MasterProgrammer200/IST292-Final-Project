@@ -107,12 +107,24 @@ namespace IST_292_Final_Project
             }
         }
 
+        /// <summary>
+        /// user clicks the add button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tslAdd_Click(object sender, EventArgs e)
+        {
+            // display the new history form
+            NewHistoryForm form = new NewHistoryForm();
+            form.ShowDialog();
+            DisplayTable();
+        }
+
         private void DisplayTable()
         {
             dgvHistory.DataSource = dbUtils.GetAllHistory();
             dgvHistory.ClearSelection();
         }
 
-        
     }
 }
